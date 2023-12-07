@@ -48,10 +48,16 @@ while janela_aberta:
             janela_aberta = False
 # comandos de direita e esquerda do carro
     comandos = pygame.key.get_pressed()
+
     if comandos[pygame.K_RIGHT] and x <= 550:
         x += velocidade
     if comandos[pygame.K_LEFT] and x>=-50:
         x -= velocidade
+
+# condicional de detectar a colisão
+
+    
+
 # condicional de aleatoriedade de spawn dos carros
     if (pos_y_prata <= -720) and (pos_y_preto <= -720) and (pos_y_azul <= -720):
 
