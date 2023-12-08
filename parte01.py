@@ -19,6 +19,9 @@ pos_y_preto = 1200
 
 velocidade_outros = randint(5,15)
 
+pontuacao = 0
+ultrapassagem = 0
+
 #imagens do jogo e plano de fundo
 fundo = pygame.image.load('Estrada.png')
 carro = pygame.image.load('carro_amarelov2.png')
@@ -27,10 +30,15 @@ carro_preto = pygame.image.load('carro_preto.png')
 carro_azul = pygame.image.load('carro_azul.png')
 
 #placar de tempo
-font = pygame.font.SysFont('arial black',20)
-texto = font.render("Tempo: ",True, (255,255,255), (0,0,0))
+font_tempo = pygame.font.SysFont('arial black',20)
+texto = font_tempo.render("Tempo: ",True, (255,255,255), (0,0,0))
 pos_texto = texto.get_rect()
 pos_texto.center=(65,50)
+
+font_pontuacao = pygame.font.SysFont('arial black',20)
+texto_pontuacao = font_pontuacao.render("Pontuação:"+str(pontuacao), True, (255,255,255))
+pos_texto_pontuacao = texto_pontuacao.get_rect()
+pos_texto_pontuacao.center = (65,30)
 
 #tempo
 timer=0
@@ -54,8 +62,10 @@ while janela_aberta:
     if comandos[pygame.K_LEFT] and x>=-50:
         x -= velocidade
 
-# condicional de detectar a colisão
-
+# condicional de pontuação
+    if y>pos_y_azul:
+        pontuacao += 100
+        ultrapassagem += 1
     
 
 # condicional de aleatoriedade de spawn dos carros
@@ -74,7 +84,7 @@ while janela_aberta:
         timer += 1
     else:
         tempo_segundo+=1
-        texto = font.render("Tempo: "+str(tempo_segundo),True, (255,255,255), (0,0,0))
+        texto = font_tempo.render("Tempo: "+str(tempo_segundo),True, (255,255,255), (0,0,0))
         timer = 0
 
     janela.blit(fundo,(0,0))
@@ -83,6 +93,7 @@ while janela_aberta:
     janela.blit(carro_azul,(pos_x_azul,pos_y_azul))
     janela.blit(carro_preto, (pos_x_preto,pos_y_preto))
     janela.blit(texto,pos_texto)
+    janela.blit(texto_pontuacao,pos_texto_pontuacao)
     
     pygame.display.update()
 
