@@ -1,3 +1,4 @@
+import random
 import pygame
 pygame.init()
 from random import randint
@@ -8,14 +9,18 @@ y=0
 velocidade = 10
 
 #posições dos outros carros
-pos_x_prata = -50
+pos_carros_prata= [-50,250,550]
 pos_y_prata = 250
 
-pos_x_azul = 550
+pos_carros_azul = [-50,250,550]
 pos_y_azul = 1000
 
-pos_x_preto = 250
+pos_carros_preto = [-50,250,550]
 pos_y_preto = 1200
+
+pos_escolhida_carro_preto  =  random.choice(pos_carros_preto)
+pos_escolhida_carros_prata = random.choice (pos_carros_prata)
+pos_escolhida_carros_azul = random.choice (pos_carros_azul)
 
 velocidade_outros = randint(5,15)
 
@@ -23,7 +28,7 @@ pontuacao = 0
 ultrapassagem = 0
 
 #imagens do jogo e plano de fundo
-fundo = pygame.image.load('Estrada.png')
+fundo = pygame.image.load('estrada.png')
 carro = pygame.image.load('carro_amarelov2.png')
 carro_prata = pygame.image.load('carro_prata.png')
 carro_preto = pygame.image.load('carro_preto.png')
@@ -72,13 +77,28 @@ while janela_aberta:
     if (pos_y_prata <= -720) and (pos_y_preto <= -720) and (pos_y_azul <= -720):
 
         pos_y_azul = randint (900,2000)
-        pos_y_prata = randint (720,1480)
-        pos_y_preto = randint (720,4000)
+        pos_y_prata = randint (800,1480)
+        pos_y_preto = randint (1000,3000)
+
+        pos_carros_prata= [-50,250,550]        
+        pos_carros_preto= [-50,550,250] 
+        pos_carros_azul= [550,250,-50] 
+
+        pos_escolhida_carro_preto  =  random.choice (pos_carros_preto)
+        pos_escolhida_carros_prata = random.choice (pos_carros_prata)
+        pos_escolhida_carros_azul = random.choice (pos_carros_azul)  
+
+         
 
     #velocidade após mudar de posição
     pos_y_preto -= velocidade_outros
     pos_y_azul -= velocidade_outros 
     pos_y_prata -= velocidade_outros 
+
+    
+
+
+       
 
     if (timer <80):
         timer += 1
@@ -89,12 +109,20 @@ while janela_aberta:
 
     janela.blit(fundo,(0,0))
     janela.blit(carro,(x,y))
-    janela.blit(carro_prata, (pos_x_prata,pos_y_prata))
-    janela.blit(carro_azul,(pos_x_azul,pos_y_azul))
-    janela.blit(carro_preto, (pos_x_preto,pos_y_preto))
+    janela.blit(carro_prata, (pos_escolhida_carros_prata,pos_y_prata))
+    janela.blit(carro_azul,(pos_escolhida_carros_azul,pos_y_azul))
+    janela.blit(carro_preto, (pos_escolhida_carro_preto,pos_y_preto))
     janela.blit(texto,pos_texto)
     janela.blit(texto_pontuacao,pos_texto_pontuacao)
     
     pygame.display.update()
 
 pygame.quit()          
+
+
+
+carro_azul_claro = pygame.image.load ('carro_da_estrada_azul_claro.png')
+carro_amarelo = pygame.image.load ('carro_da_estrada_amarelo.png')
+carro_azul_escuro = pygame.image.load ('carro_da_estrada-azul_escuro.png')
+carro_verde = pygame.image.load ('carro_da estrada_verde.png')
+carro_vermelho = pygame.image.load ('carro_da estrada_vermelho.png')
