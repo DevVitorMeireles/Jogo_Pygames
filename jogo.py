@@ -9,9 +9,30 @@ altura  = 600
 janela  = pygame.display.set_mode((largura,altura))
 pygame.display.set_caption('Jogo do Vitor Meireles')
 
-x = 380
-y = 300
-velocidade = 10
+fundo             = pygame.image.load ("estrada_antiga.png") 
+y_fundo           = 0
+
+carro_amarelo     = pygame.image.load ('carro_amarelo.png')
+x_principal       = 380
+y_principal       = 300
+velocidade        = 10
+
+carro_vermelho    = pygame.image.load ('carro_vermelho.png')
+x_vermelho        = 620
+y_vermelho        = 300
+
+carro_azul_claro  = pygame.image.load ('carro_azul_claro.png')
+x_azul_claro      = 260
+y_azul_claro      = 300
+
+carro_azul_escuro = pygame.image.load ('carro_azul_escuro.png')
+x_azul_escuro     = 465
+y_azul_escuro     = 300
+
+carro_verde       = pygame.image.load ('carro_verde.png')
+x_verde           = 60
+y_verde           = 300
+
 
 velocidade_outros = 2
 
