@@ -50,13 +50,16 @@ janela_aberta = True
 while janela_aberta: 
     # comandos de esquerda e direita
     if not fim_de_jogo:
-        comandos = pygame.key.get_pressed()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                fim_de_jogo = False
+            comandos = pygame.key.get_pressed()
 
-        if comandos[pygame.K_RIGHT] and x_principal <= 605:
-            x_principal += velocidade
+            if comandos[pygame.K_RIGHT] and x_principal <= 605:
+                x_principal += velocidade
 
-        if comandos[pygame.K_LEFT]  and x_principal >= 60:
-            x_principal -= velocidade
+            if comandos[pygame.K_LEFT]  and x_principal >= 60:
+                x_principal -= velocidade
 
     # condicionais de aleatoriedade na queda do carro
     
@@ -84,8 +87,6 @@ while janela_aberta:
         carro_azul_escuro_forma = pygame.Rect(x_azul_escuro, y_azul_escuro, 100,      130)
         carro_azul_claro_forma  = pygame.Rect(x_azul_claro,  y_azul_claro,  100,      130)
         carro_verde_forma       = pygame.Rect(x_verde,       y_verde,       100,      130)
-
-    
 
         if jogador_forma.colliderect(carro_vermelho_forma) or jogador_forma.colliderect(carro_azul_escuro_forma) or  jogador_forma.colliderect(carro_azul_claro_forma) or jogador_forma.colliderect(carro_verde_forma):
             fim_de_jogo = True
