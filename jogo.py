@@ -37,7 +37,6 @@ y_verde                        = 600
 velocidade_outros = 4
 
 
-
 def exibe_mensagem(msg, tamanho, cor):
     fonte = pygame.font.SysFont('pixel', tamanho, False, False)
     mensagem = f'{msg}'
@@ -66,6 +65,7 @@ while janela_aberta:
     
         if (y_vermelho    > altura):
             y_vermelho    = randint (-500,-185)
+            
 
         if (y_azul_escuro > altura):
             y_azul_escuro = randint (-1800,-1200)
@@ -91,8 +91,7 @@ while janela_aberta:
 
         if jogador_forma.colliderect(carro_vermelho_forma) or jogador_forma.colliderect(carro_azul_escuro_forma) or  jogador_forma.colliderect(carro_azul_claro_forma) or jogador_forma.colliderect(carro_verde_forma):
             fim_de_jogo = True
-       
-        
+
     # condicional de movimentação do fundo
 
         if y_fundo >= altura:
