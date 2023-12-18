@@ -3,6 +3,7 @@ import random
 from random import randint
 pygame.init()
 
+# nesse jogo peguei inspiração do canal Professor Neto Paschal e João Tinti
 
 largura = 800
 altura  = 600
